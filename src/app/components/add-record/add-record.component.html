@@ -1,0 +1,22 @@
+<section>
+  <form [action]="'/submit'" method="post" enctype="multipart/form-data">
+    <mat-form-field appearance="fill">
+      <mat-label>Name</mat-label>
+      <input matInput type="text" id="name" name="name" required />
+    </mat-form-field>
+    <br />
+
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" id="email" name="email" required />
+    </mat-form-field>
+    <br />
+
+    <mat-label for="file">File:</mat-label>
+    <input type="file" id="file" name="file" required />
+
+    <br />
+
+    <button mat-raised-button type="submit">Submit</button>
+  </form>
+</section>
