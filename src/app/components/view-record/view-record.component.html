@@ -1,1 +1,27 @@
-<p>view-record works!</p>
+<section *ngIf="blockchain">
+  <mat-card>
+    <mat-card-title>Blockchain Status</mat-card-title>
+    <mat-card-content>
+      <p>Length: {{ blockchain.length }}</p>
+      <p>Peers: {{ blockchain.peers.join(", ") }}</p>
+    </mat-card-content>
+  </mat-card>
+
+  <div *ngFor="let block of blockchain.chain">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> Block {{ block.index }} </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <mat-list>
+        <mat-list-item>
+          <p>Hash: {{ block.hash }}</p>
+        </mat-list-item>
+        <mat-list-item>
+          <p>Timestamp: {{ block.timestamp }}</p>
+        </mat-list-item>
+        <!-- Add more details as needed -->
+      </mat-list>
+    </mat-expansion-panel>
+  </div>
+</section>

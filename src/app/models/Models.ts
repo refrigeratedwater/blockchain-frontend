@@ -1,14 +1,15 @@
 export interface Transactions {
   author: string;
   email: string;
-  file: File;
+  file: File | any;
 }
 
 export interface Block {
   index: number;
+  previous_hash: string;
+  hash: string;
   transactions: Transactions[];
   timestamp: number;
-  previous_hash: string;
   nonce: number;
 }
 
@@ -18,7 +19,11 @@ export interface Blockchain {
   peers: string;
 }
 
+export interface Mine {
+  status: 'Block mined' | 'Faield to mine';
+  message: string;
+}
+
 export interface Node {
   node_address: string;
 }
-

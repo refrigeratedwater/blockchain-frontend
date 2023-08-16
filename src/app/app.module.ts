@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -13,9 +13,18 @@ import { MatListModule } from '@angular/material/list';
 import { ViewRecordComponent } from './components/view-record/view-record.component';
 import { AddRecordComponent } from './components/add-record/add-record.component';
 import { MaterialModule } from './material/material.module';
+import { BlockchainService } from './services/blockchain.service';
+import { HttpClientModule } from '@angular/common/http';
+import { NodesComponent } from './components/nodes/nodes.component';
 
 @NgModule({
-  declarations: [AppComponent, NavComponent, ViewRecordComponent, AddRecordComponent],
+  declarations: [
+    AppComponent,
+    NavComponent,
+    ViewRecordComponent,
+    AddRecordComponent,
+    NodesComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -25,9 +34,11 @@ import { MaterialModule } from './material/material.module';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [BlockchainService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

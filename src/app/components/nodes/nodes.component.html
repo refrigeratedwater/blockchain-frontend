@@ -1,0 +1,28 @@
+<section>
+  <mat-card>
+    <mat-card-title>Node Management</mat-card-title>
+    <mat-card-content>
+      <h3>Register a New Node</h3>
+      <mat-form-field appearance="outline">
+        <mat-label>Node Address</mat-label>
+        <input
+          matInput
+          [(ngModel)]="newNodeAddress"
+          placeholder="Node Address"
+        />
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="register()">
+        Register
+      </button>
+
+      <div *ngIf="blockchain">
+        <h3>Registered Nodes</h3>
+        <mat-list>
+          <mat-list-item *ngFor="let peer of blockchain.peers">{{
+            peer
+          }}</mat-list-item>
+        </mat-list>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</section>
