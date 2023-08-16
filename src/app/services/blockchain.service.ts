@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
-import { Transactions } from '../models/Models';
+import { Transaction } from '../models/Transaction';
 import { Blockchain } from '../models/Blockchain';
 @Injectable({
   providedIn: 'root',
@@ -21,11 +21,16 @@ export class BlockchainService {
     return this.http.get<Blockchain>(url);
   }
 
-  addTransaction(transaction: Transactions): Observable<any> {
+  getPending(): Observable<Transaction[]> {
+    return this.http.get<Transaction[]>(`${this.API_URL}/pending/tx`);
+  }
+
+  addTransaction(transaction: Transaction): Observable<any> {
     const formData = new FormData();
     formData.append('author', transaction.author);
     formData.append('email', transaction.email);
-    formData.append('file', transaction.file);
-    return this.http.post(`${this.API_URL}add/transaction`, formData);
+    formData.append('file', transaction.file as any);
+
+    return this.http.post(`${this.API_URL}/add/transaction`, formData);
   }
 }

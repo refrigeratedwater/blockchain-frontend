@@ -1,14 +1,29 @@
+/* General styling */
 section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
 
-    form {
-      display: flex;
-      flex-direction: column;
-      align-items: center; 
-      
-    }
-  }
-  
+mat-card {
+  width: 80%;
+  margin-bottom: 20px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+button {
+  margin-top: 20px;
+}
+
+/* Pending Transactions styling */
+mat-list-item {
+  padding: 10px 0;
+}
+
+mat-divider {
+  margin: 10px 0;
+}

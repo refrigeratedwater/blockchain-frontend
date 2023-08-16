@@ -1,0 +1,49 @@
+section {
+  // Styles specific to the section if needed.
+
+  mat-card {
+    padding: 16px;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    mat-card-title {
+      font-weight: bold;
+      margin-bottom: 8px;
+      // color: #333;
+    }
+
+    mat-card-content {
+      p {
+        font-size: 14px;
+        margin-bottom: 8px;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  mat-expansion-panel {
+    margin-bottom: 12px;
+
+    mat-expansion-panel-header {
+      mat-panel-title {
+        font-weight: 500;
+        //   color: #555;
+      }
+    }
+
+    mat-list {
+      padding: 0;
+
+      mat-list-item {
+        p {
+          margin: 0;
+          font-size: 14px;
+          // color: #666;
+        }
+      }
+    }
+  }
+}

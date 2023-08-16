@@ -7,13 +7,12 @@
           <input
             matInput
             type="text"
-            (ngModel)="(transaction.author)"
+            [(ngModel)]="transaction.author"
             name="name"
             required
           />
         </mat-form-field>
         <br />
-
         <mat-form-field appearance="fill">
           <mat-label>Email</mat-label>
           <input
@@ -25,7 +24,6 @@
           />
         </mat-form-field>
         <br />
-
         <mat-label for="file">File:</mat-label>
         <input
           type="file"
@@ -34,11 +32,24 @@
           (change)="onFileChange($event)"
           required
         />
-
         <br />
-
         <button mat-raised-button type="submit">Submit</button>
       </form>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- View Pending Transactions Section -->
+  <mat-card *ngIf="pendingTransactions.length > 0">
+    <mat-card-title>Pending Transactions</mat-card-title>
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item *ngFor="let tx of pendingTransactions">
+          <p><strong>Author:</strong> {{ tx.author }}</p>
+          <p><strong>Email:</strong> {{ tx.email }}</p>
+          <p><strong>File CID:</strong> {{ tx.file }}</p>
+          <mat-divider></mat-divider>
+        </mat-list-item>
+      </mat-list>
     </mat-card-content>
   </mat-card>
 </section>
