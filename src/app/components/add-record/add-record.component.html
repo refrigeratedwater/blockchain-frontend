@@ -39,7 +39,7 @@
   </mat-card>
 
   <!-- View Pending Transactions Section -->
-  <mat-card *ngIf="pendingTransactions.length > 0">
+  <mat-card *ngIf="(pendingTransactions.length > 0)">
     <mat-card-title>Pending Transactions</mat-card-title>
     <mat-card-content>
       <mat-list>
@@ -51,5 +51,8 @@
         </mat-list-item>
       </mat-list>
     </mat-card-content>
+  </mat-card>
+  <mat-card>
+    <button mat-raised-button (click)="mine()">Mine</button>
   </mat-card>
 </section>

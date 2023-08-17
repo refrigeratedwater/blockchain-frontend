@@ -1,21 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { BlockchainService } from 'src/app/services/blockchain.service';
 import { Transaction } from 'src/app/models/Transaction';
+import { Blockchain } from 'src/app/models/Blockchain';
 
 @Component({
   selector: 'app-add-record',
   templateUrl: './add-record.component.html',
   styleUrls: ['./add-record.component.scss'],
 })
-export class AddRecordComponent {
+export class AddRecordComponent{
   transaction: Transaction = new Transaction('', '', null);
   pendingTransactions: Transaction[] = [];
-
+  mineTransaction!: Blockchain
   constructor(private blockchainService: BlockchainService) {}
-
-  ngOnInit(): void {
-    this.fetchPendingTransactions();
-  }
 
   fetchPendingTransactions(): void {
     this.blockchainService.getPending().subscribe((transactions) => {
@@ -40,8 +37,8 @@ export class AddRecordComponent {
         .subscribe((response) => {
           if (response.status === 'Success') {
             alert('Transaction added successfully!');
-            // Reset the form after successful submission
             this.transaction = new Transaction('', '', null);
+            this.fetchPendingTransactions()
           } else {
             alert('Error adding transaction!');
           }
@@ -49,5 +46,12 @@ export class AddRecordComponent {
     } else {
       alert('Please fill all fields.');
     }
+  }
+
+  mine() {
+    this.blockchainService.mineTransaction().subscribe(data =>{
+      this.mineTransaction = data
+      console.log(this.mineTransaction)
+    })
   }
 }
