@@ -13,8 +13,8 @@ export class BlockchainService {
   constructor(private http: HttpClient) {}
 
   registerNode(nodeAddress: string): Observable<any> {
-    const url = `${this.API_URL}register`;
-    return this.http.post(url, { node_address: nodeAddress });
+    const url = `${this.API_URL}nodes/register`;
+    return this.http.post(url, { nodes: [nodeAddress] });
   }
 
   getBlockchain(): Observable<Blockchain> {

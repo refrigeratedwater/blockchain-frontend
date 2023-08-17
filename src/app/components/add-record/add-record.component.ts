@@ -12,6 +12,8 @@ export class AddRecordComponent{
   transaction: Transaction = new Transaction('', '', null);
   pendingTransactions: Transaction[] = [];
   mineTransaction!: Blockchain
+
+  load_pending = false
   constructor(private blockchainService: BlockchainService) {}
 
   fetchPendingTransactions(): void {
@@ -38,7 +40,11 @@ export class AddRecordComponent{
           if (response.status === 'Success') {
             alert('Transaction added successfully!');
             this.transaction = new Transaction('', '', null);
-            this.fetchPendingTransactions()
+            this.load_pending = true
+            if (this.load_pending) {
+              this.fetchPendingTransactions()
+            }
+            
           } else {
             alert('Error adding transaction!');
           }
