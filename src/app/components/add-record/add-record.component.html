@@ -1,5 +1,5 @@
 <section>
-  <mat-card>
+  <mat-card class="input-card">
     <mat-card-content>
       <form (ngSubmit)="submit()" #transactionForm="ngForm">
         <mat-form-field appearance="fill">
@@ -39,7 +39,7 @@
   </mat-card>
 
   <!-- View Pending Transactions Section -->
-  <mat-card>
+  <mat-card class="input-card" *ngIf="isSubmitted">
     <mat-card-title>Pending Transactions</mat-card-title>
     <mat-card-content>
       <mat-list>
@@ -52,7 +52,10 @@
       </mat-list>
     </mat-card-content>
   </mat-card>
-  <mat-card>
-    <button mat-raised-button (click)="mine()">Mine</button>
-  </mat-card>
+
+  <div class="transactions-container">
+    <button mat-raised-button (click)="mine()" [disabled]="!isSubmitted">
+      Mine
+    </button>
+  </div>
 </section>

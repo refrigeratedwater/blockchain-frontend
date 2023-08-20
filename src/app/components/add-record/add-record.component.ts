@@ -12,8 +12,8 @@ export class AddRecordComponent {
   transaction: Transaction = new Transaction('', '', null);
   pendingTransactions: Transaction[] = [];
   mineTransaction!: Blockchain;
-
-  load_pending = false;
+  isSubmitted = false;
+  
   constructor(private blockchainService: BlockchainService) {}
 
   fetchPendingTransactions(): void {
@@ -39,8 +39,9 @@ export class AddRecordComponent {
         .subscribe((response) => {
           alert('Transaction added successfully!');
           this.transaction = new Transaction('', '', null);
-          this.load_pending = true;
-          if (this.load_pending) {
+          this.isSubmitted = true;
+
+          if (this.isSubmitted) {
             this.fetchPendingTransactions();
           }
         });
@@ -50,6 +51,7 @@ export class AddRecordComponent {
   }
 
   mine() {
+    this.isSubmitted = false;
     this.blockchainService.mineTransaction().subscribe((data) => {
       this.mineTransaction = data;
       console.log(this.mineTransaction);
