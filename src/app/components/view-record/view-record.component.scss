@@ -30,12 +30,14 @@ section {
     mat-expansion-panel-header {
       mat-panel-title {
         font-weight: 500;
-        //   color: #555;
+        // color: #555;
       }
     }
 
     mat-list {
       padding: 0;
+      max-height: 200px;  /* Adjust this value as needed */
+      overflow-y: auto;
 
       mat-list-item {
         p {

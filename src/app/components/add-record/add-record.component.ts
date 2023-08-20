@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BlockchainService } from 'src/app/services/blockchain.service';
 import { Transaction } from 'src/app/models/Transaction';
 import { Blockchain } from 'src/app/models/Blockchain';
@@ -8,12 +8,12 @@ import { Blockchain } from 'src/app/models/Blockchain';
   templateUrl: './add-record.component.html',
   styleUrls: ['./add-record.component.scss'],
 })
-export class AddRecordComponent{
+export class AddRecordComponent {
   transaction: Transaction = new Transaction('', '', null);
   pendingTransactions: Transaction[] = [];
-  mineTransaction!: Blockchain
+  mineTransaction!: Blockchain;
 
-  load_pending = false
+  load_pending = false;
   constructor(private blockchainService: BlockchainService) {}
 
   fetchPendingTransactions(): void {
@@ -37,16 +37,11 @@ export class AddRecordComponent{
       this.blockchainService
         .addTransaction(this.transaction)
         .subscribe((response) => {
-          if (response.status === 'Success') {
-            alert('Transaction added successfully!');
-            this.transaction = new Transaction('', '', null);
-            this.load_pending = true
-            if (this.load_pending) {
-              this.fetchPendingTransactions()
-            }
-            
-          } else {
-            alert('Error adding transaction!');
+          alert('Transaction added successfully!');
+          this.transaction = new Transaction('', '', null);
+          this.load_pending = true;
+          if (this.load_pending) {
+            this.fetchPendingTransactions();
           }
         });
     } else {
@@ -55,9 +50,9 @@ export class AddRecordComponent{
   }
 
   mine() {
-    this.blockchainService.mineTransaction().subscribe(data =>{
-      this.mineTransaction = data
-      console.log(this.mineTransaction)
-    })
+    this.blockchainService.mineTransaction().subscribe((data) => {
+      this.mineTransaction = data;
+      console.log(this.mineTransaction);
+    });
   }
 }

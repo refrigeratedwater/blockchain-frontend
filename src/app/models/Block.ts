@@ -1,7 +1,7 @@
 export class Block {
   index!: number;
   transactions!: any[];
-  timestamp!: number;
+  timestamp!: string;
   previous_hash!: string;
   nonce!: number;
   hash!: string;
