@@ -13,7 +13,7 @@ export class AddRecordComponent {
   pendingTransactions: Transaction[] = [];
   mineTransaction!: Blockchain;
   isSubmitted = false;
-  
+
   constructor(private blockchainService: BlockchainService) {}
 
   fetchPendingTransactions(): void {

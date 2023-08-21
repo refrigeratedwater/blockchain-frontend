@@ -24,15 +24,20 @@
           <p>Timestamp: {{ block.timestamp }}</p>
         </mat-list-item>
         <div *ngFor="let tx of block.transactions">
-          <mat-list-item>
-            <p>Author: {{ tx.author }}</p>
-          </mat-list-item>
-          <mat-list-item>
-            <p>Email: {{ tx.email }}</p>
-          </mat-list-item>
-          <mat-list-item>
-            <p>File: {{ tx.file }}</p>
-          </mat-list-item>
+          <mat-expansion-panel
+            ><mat-expansion-panel-header
+              >Transaction:
+            </mat-expansion-panel-header>
+            <mat-list-item>
+              <p>Author: {{ tx.author }}</p>
+            </mat-list-item>
+            <mat-list-item>
+              <p>Email: {{ tx.email }}</p>
+            </mat-list-item>
+            <mat-list-item>
+              <p>File: {{ tx.file }}</p>
+            </mat-list-item></mat-expansion-panel
+          >
         </div>
       </mat-list>
     </mat-expansion-panel>
