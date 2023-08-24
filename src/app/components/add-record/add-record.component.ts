@@ -10,17 +10,9 @@ import { Blockchain } from 'src/app/models/Blockchain';
 })
 export class AddRecordComponent {
   transaction: Transaction = new Transaction('', '', null);
-  pendingTransactions: Transaction[] = [];
   mineTransaction!: Blockchain;
-  isSubmitted = false;
 
   constructor(private blockchainService: BlockchainService) {}
-
-  fetchPendingTransactions(): void {
-    this.blockchainService.getPending().subscribe((transactions) => {
-      this.pendingTransactions = transactions;
-    });
-  }
 
   onFileChange(event: any) {
     if (event.target.files.length > 0) {
@@ -34,24 +26,23 @@ export class AddRecordComponent {
       this.transaction.email &&
       this.transaction.file
     ) {
-      this.blockchainService
-        .addTransaction(this.transaction)
-        .subscribe((response) => {
+      this.blockchainService.addTransaction(this.transaction).subscribe({
+        next: (response) => {
           alert('Transaction added successfully!');
           this.transaction = new Transaction('', '', null);
-          this.isSubmitted = true;
-
-          if (this.isSubmitted) {
-            this.fetchPendingTransactions();
-          }
-        });
+          this.mine();
+        },
+        error: (error) => {
+          console.error('Error adding transaction: ', error);
+          alert('Error adding trnasaction. Please try again');
+        },
+      });
     } else {
       alert('Please fill all fields.');
     }
   }
 
   mine() {
-    this.isSubmitted = false;
     this.blockchainService.mineTransaction().subscribe((data) => {
       this.mineTransaction = data;
       console.log(this.mineTransaction);

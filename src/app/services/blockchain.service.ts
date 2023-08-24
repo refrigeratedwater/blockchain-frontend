@@ -22,6 +22,11 @@ export class BlockchainService {
     return this.http.get<Blockchain>(url);
   }
 
+  getFile(cid: string): Observable<Blob> {
+    const url = `${this.API_URL}get/file/${cid}`
+    return this.http.get(url, {responseType: 'blob'})
+  }
+
   getPending(): Observable<Transaction[]> {
     const url = `${this.API_URL}pending/tx`;
     return this.http.get<Transaction[]>(url);
