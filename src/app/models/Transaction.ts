@@ -9,7 +9,6 @@ export class Transaction {
     email: string,
     file: File | null,
     fileName: string,
-    fileExt: string
   ) {
     this.author = author;
     this.email = email;

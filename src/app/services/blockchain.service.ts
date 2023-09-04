@@ -19,7 +19,7 @@ export class BlockchainService {
 
   getBlockchain(): Observable<Blockchain> {
     const url = `${this.API_URL}chain`;
-    return this.http.get<Blockchain>(url)
+    return this.http.get<Blockchain>(url);
   }
 
   getFile(cid: string): Observable<Blob> {
@@ -40,7 +40,7 @@ export class BlockchainService {
     formData.append('email', transaction.email);
     formData.append('file', transaction.file as any);
     formData.append('fileName', transaction.fileName);
-    
+
     return this.http.post(url, formData);
   }
 

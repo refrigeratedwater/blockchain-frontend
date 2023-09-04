@@ -34,14 +34,9 @@
             <mat-list-item>
               <p>Email: {{ tx.email }}</p>
             </mat-list-item>
+            <mat-list-item> File Name: {{ tx.name }} </mat-list-item>
             <mat-list-item>
-              File Name: {{tx.name}}
-            </mat-list-item>
-            <mat-list-item>
-              File Extension: {{tx.ext}}
-            </mat-list-item>
-            <mat-list-item>
-              <a (click)="downloadFile(tx.file, tx.fileName, tx.fileExt)">File: {{ tx.file }}</a>
+              <a (click)="downloadFile(tx.file, tx.name)">File: {{ tx.file }}</a>
             </mat-list-item></mat-expansion-panel
           >
         </div>

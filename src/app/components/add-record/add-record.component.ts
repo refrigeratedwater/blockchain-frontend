@@ -9,7 +9,7 @@ import { Blockchain } from 'src/app/models/Blockchain';
   styleUrls: ['./add-record.component.scss'],
 })
 export class AddRecordComponent {
-  transaction: Transaction = new Transaction('', '', null, '', '');
+  transaction: Transaction = new Transaction('', '', null, '');
   mineTransaction!: Blockchain;
 
   constructor(private blockchainService: BlockchainService) {}
@@ -32,7 +32,7 @@ export class AddRecordComponent {
       console.log("Transaction before sending:", this.transaction)
       this.blockchainService.addTransaction(this.transaction).subscribe({
         next: (response) => {
-          this.transaction = new Transaction('', '', null, '', '');
+          this.transaction = new Transaction('', '', null, '');
           this.mine();
           alert('Transaction added successfully!');
         },
