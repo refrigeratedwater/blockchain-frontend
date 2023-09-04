@@ -9,14 +9,17 @@ import { Blockchain } from 'src/app/models/Blockchain';
   styleUrls: ['./add-record.component.scss'],
 })
 export class AddRecordComponent {
-  transaction: Transaction = new Transaction('', '', null);
+  transaction: Transaction = new Transaction('', '', null, '', '');
   mineTransaction!: Blockchain;
 
   constructor(private blockchainService: BlockchainService) {}
 
   onFileChange(event: any) {
     if (event.target.files.length > 0) {
-      this.transaction.file = event.target.files[0];
+      const file: File = event.target.files[0];
+      this.transaction.file = file;
+
+      this.transaction.fileName = file.name;
     }
   }
 
@@ -26,11 +29,12 @@ export class AddRecordComponent {
       this.transaction.email &&
       this.transaction.file
     ) {
+      console.log("Transaction before sending:", this.transaction)
       this.blockchainService.addTransaction(this.transaction).subscribe({
         next: (response) => {
-          alert('Transaction added successfully!');
-          this.transaction = new Transaction('', '', null);
+          this.transaction = new Transaction('', '', null, '', '');
           this.mine();
+          alert('Transaction added successfully!');
         },
         error: (error) => {
           console.error('Error adding transaction: ', error);

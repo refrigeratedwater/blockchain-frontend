@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { Transaction } from '../models/Transaction';
 import { Blockchain } from '../models/Blockchain';
 
@@ -19,12 +19,12 @@ export class BlockchainService {
 
   getBlockchain(): Observable<Blockchain> {
     const url = `${this.API_URL}chain`;
-    return this.http.get<Blockchain>(url);
+    return this.http.get<Blockchain>(url)
   }
 
   getFile(cid: string): Observable<Blob> {
-    const url = `${this.API_URL}get/file/${cid}`
-    return this.http.get(url, {responseType: 'blob'})
+    const url = `${this.API_URL}get/file/${cid}`;
+    return this.http.get(url, { responseType: 'blob' });
   }
 
   getPending(): Observable<Transaction[]> {
@@ -39,7 +39,8 @@ export class BlockchainService {
     formData.append('author', transaction.author);
     formData.append('email', transaction.email);
     formData.append('file', transaction.file as any);
-
+    formData.append('fileName', transaction.fileName);
+    
     return this.http.post(url, formData);
   }
 

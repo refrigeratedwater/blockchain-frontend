@@ -34,6 +34,9 @@
           <mat-icon>send</mat-icon>Submit
         </button>
       </form>
+      <div *ngIf="transaction.file">
+        <p>File Name: {{transaction.fileName}}</p>
+      </div>
     </mat-card-content>
   </mat-card>
 </section>

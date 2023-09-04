@@ -1,35 +1,49 @@
-/* General styling */
+// General container settings
 section {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  margin-top: 20px;
+  padding: 20px;
+}
 
-  mat-card {
-    width: 80%;
-    margin-bottom: 20px;
-    display: flex;
-    flex-direction: column;
+// Mat-card specific styles
+mat-card {
+  width: 100%;
+  max-width: 600px;
 
-    mat-card-content {
-      flex: 1;
-      overflow-y: auto;
-      max-height: 400px;
-    }
+  mat-card-content {
+    form {
+      display: flex;
+      flex-direction: column;
 
-    mat-form-field {
-      width: 100%;
-      margin-bottom: 10px;
-    }
+      // Styling form fields
+      mat-form-field {
+        margin-bottom: 20px;
 
-    input[type="file"] {
-      width: 100%;
-      margin-bottom: 15px;
-    }
+        &::ng-deep .mat-form-field-wrapper {
+          padding-bottom: 0;
+        }
+      }
 
-    mat-button {
-      width: 100%;
-      align-self: center;
+      // File input styling
+      mat-label {
+        margin-top: 10px;
+        font-size: 16px;
+      }
+
+      input[type="file"] {
+        margin: 10px 0;
+      }
+
+      // Button styling
+      button {
+        margin-top: 20px;
+        align-self: flex-end;
+
+        mat-icon {
+          margin-right: 8px;
+        }
+      }
     }
   }
 }
