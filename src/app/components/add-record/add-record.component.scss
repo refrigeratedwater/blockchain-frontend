@@ -1,48 +1,54 @@
-// General container settings
 section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
+  margin: 20px;
 }
 
-// Mat-card specific styles
+// Styling for the mat-card
 mat-card {
-  width: 100%;
-  max-width: 600px;
-
+  margin-bottom: 20px;
   mat-card-content {
     form {
       display: flex;
       flex-direction: column;
+      gap: 15px;
 
-      // Styling form fields
+      // Style for the mat-form-field
       mat-form-field {
-        margin-bottom: 20px;
-
-        &::ng-deep .mat-form-field-wrapper {
-          padding-bottom: 0;
+        width: 100%;
+        mat-label {
+          font-size: 16px;
+          color: white
         }
       }
 
-      // File input styling
+      // Style for file input label
       mat-label {
-        margin-top: 10px;
-        font-size: 16px;
+        margin-bottom: 10px;
       }
 
+      // Style for the file input
       input[type="file"] {
-        margin: 10px 0;
+        margin-bottom: 15px;
       }
 
-      // Button styling
+      // Style for the submit button
       button {
-        margin-top: 20px;
-        align-self: flex-end;
+        padding: 10px 20px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
 
         mat-icon {
-          margin-right: 8px;
+          font-size: 18px;
         }
+      }
+    }
+
+    // Style for displaying the file name
+    div {
+      p {
+        font-size: 16px;
+        font-weight: 500;
+        margin-top: 10px;
       }
     }
   }

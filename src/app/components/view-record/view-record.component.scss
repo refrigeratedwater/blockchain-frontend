@@ -1,62 +1,57 @@
-// Basic setup for the container
 section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
+  margin: 20px;
 }
 
-// Style for the mat-card
+// Styling for the mat-card
 mat-card {
-  width: 80%;
   margin-bottom: 20px;
-
   mat-card-title {
+    margin: 10px;
     font-size: 24px;
-    color: #333;
+    font-weight: bold;
+    color: white;
   }
-
   mat-card-content {
     p {
-      font-size: 18px;
+      font-size: 16px;
+      margin-bottom: 10px;
     }
   }
 }
 
-// Style for the expansion panels
+// Styling for the expansion panel
 mat-expansion-panel {
-  width: 80%;
-
+  margin-bottom: 10px;
   mat-expansion-panel-header {
     mat-panel-title {
-      font-size: 20px;
-      color: #333;
-      &:before {
-        content: '\f0e8'; // Font Awesome's "fa-chain" icon
-        font-family: "Font Awesome 5 Free";
-        padding-right: 10px;
-      }
+      font-size: 18px;
+      font-weight: 600;
     }
   }
-
   mat-list {
     mat-list-item {
       p {
-        font-size: 16px;
+        font-size: 14px;
       }
-    }
+      a {
+        font-size: 14px;
+        color: #007bff;
+        text-decoration: none;
+        cursor: pointer;
 
-    // Nested transactions
-    mat-expansion-panel {
-      margin-left: 20px;
-
-      mat-expansion-panel-header {
-        &:before {
-          content: '\f09d'; // Font Awesome's "fa-credit-card" icon
-          font-family: "Font Awesome 5 Free";
-          padding-right: 10px;
+        &:hover {
+          text-decoration: underline;
         }
       }
     }
+  }
+}
+
+// Nested mat-expansion-panel for transactions
+mat-expansion-panel mat-expansion-panel {
+  margin-left: 20px;
+  mat-expansion-panel-header {
+    font-size: 16px;
+    font-weight: 500;
   }
 }

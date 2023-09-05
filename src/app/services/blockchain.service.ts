@@ -12,6 +12,11 @@ export class BlockchainService {
 
   constructor(private http: HttpClient) {}
 
+ getPrev(): Observable<any> {
+  const url = `${this.API_URL}prev`
+  return this.http.get(url)
+ }
+
   registerNode(nodeAddress: string): Observable<any> {
     const url = `${this.API_URL}nodes/register`;
     return this.http.post(url, { nodes: [nodeAddress] });

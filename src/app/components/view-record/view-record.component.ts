@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BlockchainService } from 'src/app/services/blockchain.service';
 import { Blockchain } from 'src/app/models/Blockchain';
-import { Transaction } from 'src/app/models/Transaction';
 
 @Component({
   selector: 'app-view-record',

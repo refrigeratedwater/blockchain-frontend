@@ -12,7 +12,6 @@
       <mat-expansion-panel-header>
         <mat-panel-title> Block {{ block.index }} </mat-panel-title>
       </mat-expansion-panel-header>
-
       <mat-list>
         <mat-list-item>
           <p>Previous Hash: {{ block.previous_hash }}</p>
@@ -34,9 +33,13 @@
             <mat-list-item>
               <p>Email: {{ tx.email }}</p>
             </mat-list-item>
-            <mat-list-item> File Name: {{ tx.name }} </mat-list-item>
             <mat-list-item>
-              <a (click)="downloadFile(tx.file, tx.name)">File: {{ tx.file }}</a>
+              <p>File Name: {{ tx.name }}</p>
+            </mat-list-item>
+            <mat-list-item>
+              <p (click)="downloadFile(tx.file, tx.name)">
+                File: <a>{{ tx.file }}</a>
+              </p>
             </mat-list-item></mat-expansion-panel
           >
         </div>
