@@ -37,14 +37,15 @@
       </div>
     </mat-card-content>
   </mat-card>
+  <!-- <button mat-raised-button (click)="viewPrev()">View Previous Files</button>
   <mat-card *ngIf="previous">
     <mat-card-title>Previous CIDs</mat-card-title>
     <mat-card-content>
       <mat-list>
         <mat-list-item *ngFor="let p of previous">
-          {{ p }}
+          {{ p.cid }} - {{ p.file_name }}
         </mat-list-item>
       </mat-list>
     </mat-card-content>
-  </mat-card>
+  </mat-card> -->
 </section>

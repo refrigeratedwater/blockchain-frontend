@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, map } from 'rxjs';
+import { Observable} from 'rxjs';
+import { map, tap } from 'rxjs/operators';
 import { Transaction } from '../models/Transaction';
 import { Blockchain } from '../models/Blockchain';
+import { Author } from '../models/Author';
 
 @Injectable({
   providedIn: 'root',
@@ -12,10 +14,15 @@ export class BlockchainService {
 
   constructor(private http: HttpClient) {}
 
- getPrev(): Observable<any> {
-  const url = `${this.API_URL}prev`
-  return this.http.get(url)
- }
+  // getPrev(fileName: string): Observable<any> {
+  //   const url = `${this.API_URL}prev/${fileName}`;
+  //   return this.http.get(url);
+  // }
+
+  getAuthors(authorName: string): Observable<Author>{
+    const url = `${this.API_URL}author/${authorName}`
+    return this.http.get<Author>(url)
+  }
 
   registerNode(nodeAddress: string): Observable<any> {
     const url = `${this.API_URL}nodes/register`;

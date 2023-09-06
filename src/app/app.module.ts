@@ -16,6 +16,7 @@ import { MaterialModule } from './material/material.module';
 import { BlockchainService } from './services/blockchain.service';
 import { HttpClientModule } from '@angular/common/http';
 import { NodesComponent } from './components/nodes/nodes.component';
+import { ViewAuthorComponent } from './components/view-author/view-author.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { NodesComponent } from './components/nodes/nodes.component';
     ViewRecordComponent,
     AddRecordComponent,
     NodesComponent,
+    ViewAuthorComponent,
   ],
   imports: [
     BrowserModule,

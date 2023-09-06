@@ -1,3 +1,4 @@
 export interface PreviousCID {
-    cid: string
-}
+    cid: string;
+    file_name: string;
+  }

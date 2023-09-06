@@ -1,0 +1,14 @@
+<section>
+  <mat-card *ngIf="author">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> Author: {{ author.name }} </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-list>
+        <mat-list-item *ngFor="let file of author.files">
+          {{ file }}
+        </mat-list-item>
+      </mat-list>
+    </mat-expansion-panel>
+  </mat-card>
+</section>

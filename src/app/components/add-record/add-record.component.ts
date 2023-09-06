@@ -9,22 +9,18 @@ import { PreviousCID } from 'src/app/models/Previous';
   templateUrl: './add-record.component.html',
   styleUrls: ['./add-record.component.scss'],
 })
-export class AddRecordComponent implements OnInit {
+export class AddRecordComponent {
   transaction: Transaction = new Transaction('', '', null, '');
   mineTransaction!: Blockchain;
-  previous!: PreviousCID[];
+  previous!: any;
   constructor(private blockchainService: BlockchainService) {}
 
-  ngOnInit(): void {
-    this.getPrevious();
-  }
-
-  getPrevious() {
-    this.blockchainService.getPrev().subscribe((data: PreviousCID[]) => {
-      this.previous = data;
-      console.log(data);
-    });
-  }
+  // getPrevious(fileName: string) {
+  //   this.blockchainService.getPrev(fileName).subscribe((data: any) => {
+  //     console.log('Raw data: ', data);
+  //     this.previous = data;
+  //   });
+  // }
 
   onFileChange(event: any) {
     if (event.target.files.length > 0) {
