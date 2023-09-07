@@ -2,11 +2,14 @@
   <mat-card *ngIf="author">
     <mat-expansion-panel>
       <mat-expansion-panel-header>
-        <mat-panel-title> Author: {{ author.name }} </mat-panel-title>
+        <mat-panel-title> Author: {{ author.author }} </mat-panel-title>
       </mat-expansion-panel-header>
-      <mat-list>
-        <mat-list-item *ngFor="let file of author.files">
-          {{ file }}
+      <mat-list *ngFor="let file of author.files">
+        <mat-list-item>
+          <p>File Name: {{ file.name }}</p>
+        </mat-list-item>
+        <mat-list-item>
+          <p>File CID: {{ file.cid }}</p>
         </mat-list-item>
       </mat-list>
     </mat-expansion-panel>

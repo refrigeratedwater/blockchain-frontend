@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable} from 'rxjs';
+import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { Transaction } from '../models/Transaction';
 import { Blockchain } from '../models/Blockchain';
-import { Author } from '../models/Author';
+import { Author, File } from '../models/Author';
 
 @Injectable({
   providedIn: 'root',
@@ -19,9 +19,19 @@ export class BlockchainService {
   //   return this.http.get(url);
   // }
 
-  getAuthors(authorName: string): Observable<Author>{
-    const url = `${this.API_URL}author/${authorName}`
-    return this.http.get<Author>(url)
+  getAuthors(): Observable<any> {
+    const url = `${this.API_URL}authors`;
+    return this.http.get(url);
+  }
+
+  getAuthorFiles(authorName: string): Observable<Author> {
+    const url = `${this.API_URL}author/files/${authorName}`;
+    return this.http.get<any>(url).pipe(
+      map((data) => {
+        const files = data.file.map((f: any) => new File(f.file_name, f.file));
+        return new Author(data.author, files);
+      })
+    );
   }
 
   registerNode(nodeAddress: string): Observable<any> {
