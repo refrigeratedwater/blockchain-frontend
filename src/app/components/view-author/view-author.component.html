@@ -4,14 +4,22 @@
       <mat-expansion-panel-header>
         <mat-panel-title> Author: {{ author.author }} </mat-panel-title>
       </mat-expansion-panel-header>
-      <mat-list *ngFor="let file of author.files">
-        <mat-list-item>
-          <p>File Name: {{ file.name }}</p>
-        </mat-list-item>
-        <mat-list-item>
-          <p>File CID: {{ file.cid }}</p>
-        </mat-list-item>
-      </mat-list>
+
+      <div *ngFor="let file of author.files">
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title> File: {{ file.name }} </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-list>
+            <mat-list-item>
+              <p>Current CID: {{ file.cids.current }}</p>
+            </mat-list-item>
+            <mat-list-item *ngIf="file.cids.previous">
+              <p>Previous CID: {{ file.cids.previous }}</p>
+            </mat-list-item>
+          </mat-list>
+        </mat-expansion-panel>
+      </div>
     </mat-expansion-panel>
   </mat-card>
 </section>

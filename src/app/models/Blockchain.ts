@@ -1,4 +1,4 @@
-import { Block } from './Block'; // Ensure consistent casing here
+import { Block } from './Block';
 
 export class Blockchain {
   length!: number;

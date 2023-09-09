@@ -5,12 +5,14 @@ section {
 // Styling for the mat-card
 mat-card {
   margin-bottom: 20px;
+
   mat-card-title {
     margin: 10px;
     font-size: 24px;
     font-weight: bold;
     color: white;
   }
+
   mat-card-content {
     p {
       font-size: 16px;
@@ -19,39 +21,62 @@ mat-card {
   }
 }
 
-// Styling for the expansion panel
+// Styling for the main expansion panel
 mat-expansion-panel {
   margin-bottom: 10px;
+
   mat-expansion-panel-header {
     mat-panel-title {
       font-size: 18px;
       font-weight: 600;
     }
   }
+
   mat-list {
     mat-list-item {
       p {
         font-size: 14px;
-      }
-      a {
-        font-size: 14px;
-        color: #007bff;
-        text-decoration: none;
-        cursor: pointer;
+        a {
+          font-size: 14px;
+          color: #007bff;
+          text-decoration: none;
+          cursor: pointer;
 
-        &:hover {
-          text-decoration: underline;
+          &:hover {
+            text-decoration: underline;
+          }
         }
       }
     }
-  }
-}
 
-// Nested mat-expansion-panel for transactions
-mat-expansion-panel mat-expansion-panel {
-  margin-left: 20px;
-  mat-expansion-panel-header {
-    font-size: 16px;
-    font-weight: 500;
+    // Styling for the transaction's expansion panel
+    mat-expansion-panel {
+      mat-expansion-panel-header {
+        font-size: 16px;
+        font-weight: 500;
+      }
+
+      mat-list-item {
+        p {
+          font-size: 14px;
+        }
+      }
+
+      // Styling for the file details' expansion panel
+      mat-expansion-panel {
+        margin-left: 20px;
+
+        mat-expansion-panel-header {
+          font-size: 14px;
+          font-weight: 500;
+        }
+
+        mat-list-item {
+          p {
+            font-size: 12px;
+          }
+        }
+      }
+    }
   }
 }

@@ -9,7 +9,8 @@ import { BlockchainService } from 'src/app/services/blockchain.service';
 })
 export class ViewAuthorComponent implements OnInit {
   author!: Author;
-  authors!: Author;
+  authors: Author[] = [];
+
   constructor(private blockchainService: BlockchainService) {}
 
   getAuthorFiles() {
@@ -26,9 +27,14 @@ export class ViewAuthorComponent implements OnInit {
   }
 
   getAuthors() {
-    this.blockchainService.getAuthors().subscribe((data) => {
-      this.authors.author = data;
-    });
+    this.blockchainService.getAuthors().subscribe(
+      (data: any) => {
+        this.authors = data;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
   ngOnInit(): void {

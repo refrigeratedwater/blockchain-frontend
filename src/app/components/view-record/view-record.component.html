@@ -22,10 +22,11 @@
         <mat-list-item>
           <p>Timestamp: {{ block.timestamp }}</p>
         </mat-list-item>
+
         <div *ngFor="let tx of block.transactions">
-          <mat-expansion-panel
-            ><mat-expansion-panel-header
-              >Transaction:
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              Transaction:
             </mat-expansion-panel-header>
             <mat-list-item>
               <p>Author: {{ tx.author }}</p>
@@ -33,15 +34,31 @@
             <mat-list-item>
               <p>Email: {{ tx.email }}</p>
             </mat-list-item>
+
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                File Name: {{ tx.file_info.name }}
+              </mat-expansion-panel-header>
+              <mat-list-item>
+                <p
+                  (click)="
+                    downloadFile(tx.file_info.cids.current, tx.file_info.name)
+                  "
+                >
+                  Current File CID: <a>{{ tx.file_info.cids.current }}</a>
+                </p>
+              </mat-list-item>
+              <mat-list-item *ngIf="tx.file_info.cids.previous">
+                <p>Previous File CID: {{ tx.file_info.cids.previous }}</p>
+              </mat-list-item>
+            </mat-expansion-panel>
             <mat-list-item>
-              <p>File Name: {{ tx.name }}</p>
+              <p>Current Chain CID: {{ tx.chain.current_chain_cid }}</p>
             </mat-list-item>
-            <mat-list-item>
-              <p (click)="downloadFile(tx.file, tx.name)">
-                File: <a>{{ tx.file }}</a>
-              </p>
-            </mat-list-item></mat-expansion-panel
-          >
+            <mat-list-item *ngIf="tx.chain.previous_chain_cid">
+              <p>Previous Chain CID: {{ tx.chain.previous_chain_cid }}</p>
+            </mat-list-item>
+          </mat-expansion-panel>
         </div>
       </mat-list>
     </mat-expansion-panel>

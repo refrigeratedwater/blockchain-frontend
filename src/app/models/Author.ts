@@ -1,10 +1,20 @@
+export class VersionInfo {
+  current: string;
+  previous?: string;
+
+  constructor(current: string, previous?: string) {
+    this.current = current;
+    if (previous) this.previous = previous;
+  }
+}
+
 export class File {
   name: string;
-  cid: string;
+  cids: VersionInfo;
 
-  constructor(name: string, cid: string) {
+  constructor(name: string, cids: VersionInfo) {
     this.name = name;
-    this.cid = cid;
+    this.cids = cids;
   }
 }
 

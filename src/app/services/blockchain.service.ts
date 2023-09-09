@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { Transaction } from '../models/Transaction';
 import { Blockchain } from '../models/Blockchain';
-import { Author, File } from '../models/Author';
+import { Author, File, VersionInfo } from '../models/Author';
 
 @Injectable({
   providedIn: 'root',
@@ -13,11 +13,6 @@ export class BlockchainService {
   private API_URL = 'http://localhost:5000/';
 
   constructor(private http: HttpClient) {}
-
-  // getPrev(fileName: string): Observable<any> {
-  //   const url = `${this.API_URL}prev/${fileName}`;
-  //   return this.http.get(url);
-  // }
 
   getAuthors(): Observable<any> {
     const url = `${this.API_URL}authors`;
@@ -28,7 +23,10 @@ export class BlockchainService {
     const url = `${this.API_URL}author/files/${authorName}`;
     return this.http.get<any>(url).pipe(
       map((data) => {
-        const files = data.file.map((f: any) => new File(f.file_name, f.file));
+        const files = data.files.map(
+          (f: any) =>
+            new File(f.name, new VersionInfo(f.cids.current, f.cids.previous))
+        );
         return new Author(data.author, files);
       })
     );
@@ -60,7 +58,7 @@ export class BlockchainService {
     const formData = new FormData();
     formData.append('author', transaction.author);
     formData.append('email', transaction.email);
-    formData.append('file', transaction.file as any);
+    formData.append('file', transaction.file_info as any);
     formData.append('fileName', transaction.fileName);
 
     return this.http.post(url, formData);
