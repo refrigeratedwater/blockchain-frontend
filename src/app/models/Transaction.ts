@@ -3,11 +3,11 @@ import { VersionInfo } from './Author';
 export class ChainInfo {
   current_chain_cid?: string;
   previous_chain_cid?: string;
-  versions: { [key: string]: VersionInfo };
+  versions: VersionInfo[];
 
   constructor(
     current_chain_cid: string,
-    versions: { [key: string]: VersionInfo },
+    versions: VersionInfo[],
     previous_chain_cid?: string
   ) {
     this.current_chain_cid = current_chain_cid;

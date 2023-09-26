@@ -39,6 +39,9 @@
               <mat-expansion-panel-header>
                 File Name: {{ tx.file_info.name }}
               </mat-expansion-panel-header>
+              <mat-list-item *ngIf="tx.file_info.cids.previous">
+                <p>Previous File CID: {{ tx.file_info.cids.previous }}</p>
+              </mat-list-item>
               <mat-list-item>
                 <p
                   (click)="
@@ -48,15 +51,12 @@
                   Current File CID: <a>{{ tx.file_info.cids.current }}</a>
                 </p>
               </mat-list-item>
-              <mat-list-item *ngIf="tx.file_info.cids.previous">
-                <p>Previous File CID: {{ tx.file_info.cids.previous }}</p>
-              </mat-list-item>
             </mat-expansion-panel>
-            <mat-list-item>
-              <p>Current Chain CID: {{ tx.chain.current_chain_cid }}</p>
-            </mat-list-item>
             <mat-list-item *ngIf="tx.chain.previous_chain_cid">
               <p>Previous Chain CID: {{ tx.chain.previous_chain_cid }}</p>
+            </mat-list-item>
+            <mat-list-item>
+              <p>Current Chain CID: {{ tx.chain.current_chain_cid }}</p>
             </mat-list-item>
           </mat-expansion-panel>
         </div>
