@@ -39,24 +39,24 @@
               <mat-expansion-panel-header>
                 File Name: {{ tx.file_info.name }}
               </mat-expansion-panel-header>
-              <mat-list-item *ngIf="tx.file_info.cids.previous">
-                <p>Previous File CID: {{ tx.file_info.cids.previous }}</p>
+              <mat-list-item *ngIf="tx.file_info.previous">
+                <p>Previous File CID: {{ tx.file_info.previous }}</p>
               </mat-list-item>
               <mat-list-item>
                 <p
                   (click)="
-                    downloadFile(tx.file_info.cids.current, tx.file_info.name)
+                    downloadFile(tx.file_info.current, tx.file_info.name)
                   "
                 >
-                  Current File CID: <a>{{ tx.file_info.cids.current }}</a>
+                  Current File CID: <a>{{ tx.file_info.current }}</a>
                 </p>
               </mat-list-item>
             </mat-expansion-panel>
-            <mat-list-item *ngIf="tx.chain.previous_chain_cid">
+            <!-- <mat-list-item *ngIf="tx.chain.previous_chain_cid">
               <p>Previous Chain CID: {{ tx.chain.previous_chain_cid }}</p>
-            </mat-list-item>
+            </mat-list-item> -->
             <mat-list-item>
-              <p>Current Chain CID: {{ tx.chain.current_chain_cid }}</p>
+              <p>Current Chain CID: {{ tx.chain.versions }}</p>
             </mat-list-item>
           </mat-expansion-panel>
         </div>

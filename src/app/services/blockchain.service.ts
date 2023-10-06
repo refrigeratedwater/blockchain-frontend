@@ -21,16 +21,16 @@ export class BlockchainService {
 
   getAuthorFiles(authorName: string): Observable<Author> {
     const url = `${this.API_URL}author/files/${authorName}`;
-    return this.http.get<any>(url).pipe(
+    return this.http.get<Author>(url).pipe(
       map((data) => {
         const files = data.files.map(
-          (f: any) =>
+          (f) =>
             new File(f.name, new VersionInfo(f.cids.current, f.cids.previous))
         );
         return new Author(data.author, files);
       })
     );
-  }
+}
 
   registerNode(nodeAddress: string): Observable<any> {
     const url = `${this.API_URL}nodes/register`;
@@ -59,7 +59,7 @@ export class BlockchainService {
     formData.append('author', transaction.author);
     formData.append('email', transaction.email);
     formData.append('file', transaction.file_info as any);
-    formData.append('fileName', transaction.fileName);
+    formData.append('fileName', (transaction.fileName));
 
     return this.http.post(url, formData);
   }

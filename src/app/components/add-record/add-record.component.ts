@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BlockchainService } from 'src/app/services/blockchain.service';
 import { ChainInfo, Transaction } from 'src/app/models/Transaction';
 import { Blockchain } from 'src/app/models/Blockchain';
-import { VersionInfo } from 'src/app/models/Author';
+import { File, VersionInfo } from 'src/app/models/Author';
 
 @Component({
   selector: 'app-add-record',
@@ -15,8 +15,9 @@ export class AddRecordComponent {
     '',
     null,
     '',
-    new ChainInfo('', [new VersionInfo('', '')], '')
+    new ChainInfo(new VersionInfo('', ''))
   );
+
   mineTransaction!: Blockchain;
 
   constructor(private blockchainService: BlockchainService) {}
@@ -42,7 +43,7 @@ export class AddRecordComponent {
             '',
             null,
             '',
-            new ChainInfo('', [], '')
+            new ChainInfo(new VersionInfo('', ''))
           );
           this.mine();
           alert('Transaction added successfully!');
