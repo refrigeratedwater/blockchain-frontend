@@ -2,7 +2,7 @@
   <mat-card>
     <mat-card-content>
       <form (ngSubmit)="submit()" #transactionForm="ngForm">
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="outline">
           <mat-label>Name</mat-label>
           <input
             matInput
@@ -12,7 +12,7 @@
             required
           />
         </mat-form-field>
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="outline">
           <mat-label>Email</mat-label>
           <input
             matInput
@@ -32,9 +32,9 @@
         />
         <button mat-raised-button type="submit">Submit</button>
       </form>
-      <div *ngIf="transaction.file_info">
+      <mat-card-footer *ngIf="transaction.file_info">
         <p>File Name: {{ transaction.file_info.name }}</p>
-      </div>
+      </mat-card-footer>
     </mat-card-content>
   </mat-card>
   <!-- <button mat-raised-button (click)="viewPrev()">View Previous Files</button>
