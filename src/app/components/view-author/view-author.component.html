@@ -1,4 +1,21 @@
 <section>
+  <form (submit)="onSearchAuthor()">
+    <mat-form-field appearance="outline">
+      <mat-label>Search for an Author</mat-label>
+      <input
+        matInput
+        [(ngModel)]="searchedAuthorName"
+        name="authorName"
+        required
+      />
+    </mat-form-field>
+    <button mat-raised-button type="submit">Search</button>
+  </form>
+  <mat-card *ngIf="authors">
+    <ul>
+      <li *ngFor="let author of authors?.authorList">{{ author }}</li>
+    </ul>
+  </mat-card>
   <mat-card *ngIf="author">
     <mat-expansion-panel>
       <mat-expansion-panel-header>

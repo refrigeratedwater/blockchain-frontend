@@ -18,6 +18,14 @@ export class File {
   }
 }
 
+export class Authors {
+  authorList: string[];
+
+  constructor(authorList: string[]) {
+    this.authorList = authorList;
+  }
+}
+
 export class Author {
   author: string;
   files: File[];

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Author } from 'src/app/models/Author';
+import { Author, Authors } from 'src/app/models/Author';
 import { BlockchainService } from 'src/app/services/blockchain.service';
 
 @Component({
@@ -9,13 +9,13 @@ import { BlockchainService } from 'src/app/services/blockchain.service';
 })
 export class ViewAuthorComponent implements OnInit {
   author!: Author;
-  authors: Author[] = [];
+  authors: Authors = new Authors([]);
+  searchedAuthorName: string = '';
 
   constructor(private blockchainService: BlockchainService) {}
 
-  getAuthorFiles() {
-    const authorName = 'admin';
-    this.blockchainService.getAuthorFiles(authorName).subscribe(
+  getAuthorFiles(searchedAuthorName: string) {
+    this.blockchainService.getAuthorFiles(searchedAuthorName).subscribe(
       (data) => {
         console.log(data);
         this.author = data;
@@ -26,10 +26,19 @@ export class ViewAuthorComponent implements OnInit {
     );
   }
 
+  onSearchAuthor() {
+    if (this.searchedAuthorName.trim()) {
+      this.getAuthorFiles(this.searchedAuthorName);
+    } else {
+      alert('Please enter an author name.');
+    }
+  }
+
   getAuthors() {
     this.blockchainService.getAuthors().subscribe(
-      (data: any) => {
+      (data) => {
         this.authors = data;
+        console.log(this.authors);
       },
       (error) => {
         console.log(error);
@@ -38,6 +47,6 @@ export class ViewAuthorComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getAuthorFiles();
+    this.getAuthors();
   }
 }

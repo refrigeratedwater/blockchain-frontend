@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Transaction } from '../models/Transaction';
 import { Blockchain } from '../models/Blockchain';
-import { Author, File, VersionInfo } from '../models/Author';
+import { Author, Authors, File, VersionInfo } from '../models/Author';
 
 @Injectable({
   providedIn: 'root',
@@ -14,9 +14,9 @@ export class BlockchainService {
 
   constructor(private http: HttpClient) {}
 
-  getAuthors(): Observable<any> {
+  getAuthors(): Observable<Authors> {
     const url = `${this.API_URL}authors`;
-    return this.http.get(url);
+    return this.http.get<Authors>(url);
   }
 
   getAuthorFiles(authorName: string): Observable<Author> {
