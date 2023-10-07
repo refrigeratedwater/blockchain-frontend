@@ -11,22 +11,26 @@
     </mat-form-field>
     <button mat-raised-button type="submit">Search</button>
   </form>
+
   <mat-card *ngIf="authors">
     <ul>
       <li *ngFor="let author of authors?.authorList">{{ author }}</li>
     </ul>
   </mat-card>
+
   <mat-card *ngIf="author">
+    <mat-card-title>Author: {{ author.author }}</mat-card-title>
     <mat-expansion-panel>
       <mat-expansion-panel-header>
-        <mat-panel-title> Author: {{ author.author }} </mat-panel-title>
+        <mat-panel-title> {{ author.author }}'s Authorship</mat-panel-title>
       </mat-expansion-panel-header>
 
-      <div *ngFor="let file of author.files">
+      <ng-container *ngFor="let file of author.files">
         <mat-expansion-panel>
           <mat-expansion-panel-header>
             <mat-panel-title> File: {{ file.name }} </mat-panel-title>
           </mat-expansion-panel-header>
+
           <mat-list>
             <mat-list-item>
               <p>Current CID: {{ file.cids.current }}</p>
@@ -36,7 +40,7 @@
             </mat-list-item>
           </mat-list>
         </mat-expansion-panel>
-      </div>
+      </ng-container>
     </mat-expansion-panel>
   </mat-card>
 </section>
