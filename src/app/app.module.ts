@@ -17,6 +17,7 @@ import { BlockchainService } from './services/blockchain.service';
 import { HttpClientModule } from '@angular/common/http';
 import { NodesComponent } from './components/nodes/nodes.component';
 import { ViewAuthorComponent } from './components/view-author/view-author.component';
+import { RecordLoaderComponent } from './components/record-loader/record-loader.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { ViewAuthorComponent } from './components/view-author/view-author.compon
     AddRecordComponent,
     NodesComponent,
     ViewAuthorComponent,
+    RecordLoaderComponent,
   ],
   imports: [
     BrowserModule,

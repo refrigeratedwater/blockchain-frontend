@@ -49,6 +49,10 @@
                   "
                 >
                   Current File CID: <a>{{ tx.file_info.current }}</a>
+                  <mat-progress-bar
+                    *ngIf="isLoading"
+                    mode="indeterminate"
+                  ></mat-progress-bar>
                 </p>
               </mat-list-item>
             </mat-expansion-panel>

@@ -1,4 +1,5 @@
 <section>
+  <app-record-loader *ngIf="isLoading"></app-record-loader>
   <mat-card>
     <mat-card-content>
       <form (ngSubmit)="submit()" #transactionForm="ngForm">
@@ -32,6 +33,7 @@
         />
         <button mat-raised-button type="submit">Submit</button>
       </form>
+
       <mat-card-footer *ngIf="transaction.file_info">
         <p>File Name: {{ transaction.file_info.name }}</p>
       </mat-card-footer>

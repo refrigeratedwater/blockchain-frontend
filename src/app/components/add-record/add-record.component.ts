@@ -19,6 +19,7 @@ export class AddRecordComponent {
   );
 
   mineTransaction!: Blockchain;
+  isLoading = false;
 
   constructor(private blockchainService: BlockchainService) {}
   onFileChange(event: any) {
@@ -36,6 +37,7 @@ export class AddRecordComponent {
       this.transaction.email &&
       this.transaction.file_info
     ) {
+      this.isLoading = true;
       this.blockchainService.addTransaction(this.transaction).subscribe({
         next: (response) => {
           this.transaction = new Transaction(
@@ -46,11 +48,12 @@ export class AddRecordComponent {
             new ChainInfo(new VersionInfo('', ''))
           );
           this.mine();
-          alert('Transaction added successfully!');
+          this.isLoading = false;
           console.log(response);
         },
         error: (error) => {
           console.error('Error adding transaction: ', error);
+          this.isLoading = false;
           alert('Error adding transaction. Please try again');
         },
       });

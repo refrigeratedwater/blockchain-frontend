@@ -9,6 +9,7 @@ import { Blockchain } from 'src/app/models/Blockchain';
 })
 export class ViewRecordComponent implements OnInit {
   blockchain!: Blockchain;
+  isLoading = false;
   constructor(private blockchainService: BlockchainService) {}
 
   ngOnInit(): void {
@@ -19,6 +20,7 @@ export class ViewRecordComponent implements OnInit {
   }
 
   downloadFile(cid: string, fileName: string): void {
+    this.isLoading = true;
     this.blockchainService.getFile(cid).subscribe(
       (data: Blob) => {
         const type = data.type;
@@ -31,9 +33,11 @@ export class ViewRecordComponent implements OnInit {
         document.body.appendChild(a);
         a.click();
         a.remove();
+        this.isLoading = false;
       },
       (error: any) => {
         console.error('Error downloading the file', error);
+        this.isLoading = false;
       },
       () => console.log('File Downloaded')
     );
