@@ -7,6 +7,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatListModule } from '@angular/material/list';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatBadgeModule } from '@angular/material/badge';
 
 const Modules = [
   MatButtonModule,
@@ -17,6 +18,7 @@ const Modules = [
   MatExpansionModule,
   MatListModule,
   MatProgressBarModule,
+  MatBadgeModule,
 ];
 
 @NgModule({

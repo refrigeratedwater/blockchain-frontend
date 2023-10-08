@@ -23,31 +23,26 @@
             required
           />
         </mat-form-field>
-        <mat-label for="file">File:</mat-label>
         <input
           type="file"
-          id="file"
-          name="file"
+          id="fileInput"
+          #fileInput
           (change)="onFileChange($event)"
-          required
+          style="display: none"
         />
+        <button
+          type="button"
+          mat-raised-button
+          color="primary"
+          (click)="fileInput.click()"
+        >
+          Upload Record
+        </button>
+        <mat-card-footer *ngIf="transaction.file_info">
+          <p>File Name: {{ transaction.file_info.name }}</p>
+        </mat-card-footer>
         <button mat-raised-button type="submit">Submit</button>
       </form>
-
-      <mat-card-footer *ngIf="transaction.file_info">
-        <p>File Name: {{ transaction.file_info.name }}</p>
-      </mat-card-footer>
     </mat-card-content>
   </mat-card>
-  <!-- <button mat-raised-button (click)="viewPrev()">View Previous Files</button>
-  <mat-card *ngIf="previous">
-    <mat-card-title>Previous CIDs</mat-card-title>
-    <mat-card-content>
-      <mat-list>
-        <mat-list-item *ngFor="let p of previous">
-          {{ p.cid }} - {{ p.file_name }}
-        </mat-list-item>
-      </mat-list>
-    </mat-card-content>
-  </mat-card> -->
 </section>

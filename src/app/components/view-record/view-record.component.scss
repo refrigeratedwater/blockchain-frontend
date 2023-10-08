@@ -1,81 +1,77 @@
 section {
-  margin: 20px;
-}
+  padding: 30px;
 
-// Styling for the mat-card
-mat-card {
-  margin-bottom: 20px;
+  mat-card {
+    margin-bottom: 25px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 
-  mat-card-title {
-    margin: 10px;
-    font-size: 24px;
-    font-weight: bold;
-    color: white;
-  }
-
-  mat-card-content {
-    p {
-      font-size: 16px;
-      margin-bottom: 10px;
+    mat-card-title {
+      padding: 15px 20px;
     }
-  }
-}
 
-// Styling for the main expansion panel
-mat-expansion-panel {
-  margin-bottom: 10px;
+    mat-card-content {
+      padding: 15px 20px;
 
-  mat-expansion-panel-header {
-    mat-panel-title {
-      font-size: 18px;
-      font-weight: 600;
-    }
-  }
-
-  mat-list {
-    mat-list-item {
       p {
-        font-size: 14px;
-        a {
-          font-size: 14px;
-          color: #007bff;
-          text-decoration: none;
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+  mat-expansion-panel {
+    margin: 20px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+
+    mat-expansion-panel-header {
+      padding: 0 20px;
+
+      &:hover {
+        color: inherit;
+      }
+
+      mat-panel-title {
+        padding: 10px 0;
+      }
+    }
+
+    mat-list {
+      mat-list-item {
+        padding: 10px 20px;
+
+        a { 
+          text-decoration: underline;
           cursor: pointer;
 
           &:hover {
-            text-decoration: underline;
+            color: #007bff;
           }
         }
+      }
+
+      mat-progress-bar {
+        margin-top: 10px;
       }
     }
 
-    // Styling for the transaction's expansion panel
     mat-expansion-panel {
+      margin: 10px 0; 
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.200); 
+
+      .mat-expansion-panel-content {
+        height: 0;
+        overflow: hidden;
+        transition: height 0.25s ease-in-out;
+      }
+
+      &.mat-expanded {
+        .mat-expansion-panel-content {
+          height: auto;
+          overflow: visible;
+        }
+      }
+
       mat-expansion-panel-header {
-        font-size: 16px;
-        font-weight: 500;
-      }
-
-      mat-list-item {
-        p {
-          font-size: 14px;
-        }
-      }
-
-      // Styling for the file details' expansion panel
-      mat-expansion-panel {
-        margin-left: 20px;
-
-        mat-expansion-panel-header {
-          font-size: 14px;
-          font-weight: 500;
-        }
-
-        mat-list-item {
-          p {
-            font-size: 12px;
-          }
-        }
+        padding: 0 15px;
       }
     }
   }

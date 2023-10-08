@@ -13,6 +13,7 @@
   </form>
 
   <mat-card *ngIf="authors">
+    <mat-card-title> Authors</mat-card-title>
     <ul>
       <li *ngFor="let author of authors?.authorList">{{ author }}</li>
     </ul>
@@ -32,11 +33,18 @@
           </mat-expansion-panel-header>
 
           <mat-list>
-            <mat-list-item>
-              <p>Current CID: {{ file.cids.current }}</p>
-            </mat-list-item>
+            <!-- Previous CID -->
             <mat-list-item *ngIf="file.cids.previous">
-              <p>Previous CID: {{ file.cids.previous }}</p>
+              <mat-icon>history</mat-icon>
+              Previous CID:
+              <span matBadgeColor="accent">{{ file.cids.previous }}</span>
+            </mat-list-item>
+
+            <!-- Current CID -->
+            <mat-list-item>
+              <mat-icon>check_circle</mat-icon>
+              Current CID:
+              <span matBadgeColor="primary">{{ file.cids.current }}</span>
             </mat-list-item>
           </mat-list>
         </mat-expansion-panel>
