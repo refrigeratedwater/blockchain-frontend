@@ -13,9 +13,15 @@ export class ViewRecordComponent implements OnInit {
   constructor(private blockchainService: BlockchainService) {}
 
   ngOnInit(): void {
+    this.getChain()
+  }
+
+  getChain() {
     this.blockchainService.getBlockchain().subscribe((data) => {
+      this.isLoading = true
       this.blockchain = data;
       console.log(this.blockchain.chain);
+      this.isLoading = false
     });
   }
 

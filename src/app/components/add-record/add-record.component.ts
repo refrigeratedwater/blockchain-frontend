@@ -49,6 +49,7 @@ export class AddRecordComponent {
           );
           this.mine();
           this.isLoading = false;
+          alert('Record added to blockchain')
           console.log(response);
         },
         error: (error) => {

@@ -18,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NodesComponent } from './components/nodes/nodes.component';
 import { ViewAuthorComponent } from './components/view-author/view-author.component';
 import { RecordLoaderComponent } from './components/loaders/record-loader/record-loader.component';
+import { WelcomeComponent } from './components/loaders/welcome/welcome.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { RecordLoaderComponent } from './components/loaders/record-loader/record
     NodesComponent,
     ViewAuthorComponent,
     RecordLoaderComponent,
+    WelcomeComponent,
   ],
   imports: [
     BrowserModule,
