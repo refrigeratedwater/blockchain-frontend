@@ -27,10 +27,14 @@ export class ViewAuthorComponent implements OnInit {
   }
 
   onSearchAuthor() {
-    if (this.searchedAuthorName.trim()) {
+    if (!this.searchedAuthorName.trim()) {
+      alert('Please enter an author name.');
+      return;
+    }
+    if (this.authors.authorList.includes(this.searchedAuthorName)) {
       this.getAuthorFiles(this.searchedAuthorName);
     } else {
-      alert('Please enter an author name.');
+      alert('Author does not exist.');
     }
   }
 
